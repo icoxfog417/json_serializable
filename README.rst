@@ -2,10 +2,17 @@
 Json Serializable
 =================
 
- **Json Serializable** enables python class to be serializable/deserializable. ::
+**Json Serializable** enables python class to be serializable/deserializable. ::
 
     json = your_class_obj.to_json()  # serialize
     obj = YourClass().load_json(json)  # deserialize
+
+Install
+-------
+
+::
+
+    pip install json_serializable
 
 
 Quick Start
