@@ -18,7 +18,7 @@ Install
 Quick Start
 -----------
 
-Sample code(see the `demo.py <https://github.com/icoxfog417/json_serializable/blob/master/test/demo.py>`_ file in test folder)::
+Sample code(see the `demo.py <https://github.com/icoxfog417/json_serializable/blob/master/json_serializable/test/demo.py>`_ file in test folder)::
 
     from enum import Enum
     from datetime import datetime
