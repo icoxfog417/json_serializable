@@ -7,11 +7,18 @@ Json Serializable
     json = your_class_obj.to_json()  # serialize
     obj = YourClass().load_json(json)  # deserialize
 
+Install
+-------
+
+::
+  
+    pip install json_serializable
+
 
 Quick Start
 -----------
 
-Sample code(see the `demo.py <https://github.com/icoxfog417/json_serializable/blob/master/test/demo.py>`_ file in test folder)::
+Sample code(see the `demo.py <https://github.com/icoxfog417/json_serializable/blob/master/test/demo.py>`_ file in test folder):: python
 
     from enum import Enum
     from datetime import datetime
@@ -66,7 +73,7 @@ datetime and Enum also supported.
 Customize
 ---------
 
-You can customize serialize/deserialize rule like below.::
+You can customize serialize/deserialize rule like below.:: python
 
     self.set_serialize_rule(datetime, lambda v: v.strftime("%Y/%m/%d %H:%M:%S"))
     self.set_deserialize_rule(datetime, lambda t, v: datetime.strptime(v, "%Y/%m/%d %H:%M:%S"))
