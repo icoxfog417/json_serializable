@@ -2,9 +2,16 @@
 Json Serializable
 =================
 
-**Json Serializable** enables python class to be serializable/deserializable
+ **Json Serializable** enables python class to be serializable/deserializable. ::
 
-Serialize sample(see the `demo.py <https://github.com/icoxfog417/json_serializable/blob/master/test/demo.py>`_ file in test folder)::
+    json = your_class_obj.to_json()  # serialize
+    obj = YourClass().load_json(json)  # deserialize
+
+
+Quick Start
+-----------
+
+Sample code(see the `demo.py <https://github.com/icoxfog417/json_serializable/blob/master/test/demo.py>`_ file in test folder)::
 
     from enum import Enum
     from datetime import datetime
@@ -30,15 +37,22 @@ Serialize sample(see the `demo.py <https://github.com/icoxfog417/json_serializab
 
     if __name__ == "__main__":
         # serialize
-        post = BlogPost("About Python", Category.technology, datetime.today(), "I learned about Python.")
-        post_json = post.to_json()  # serialize the class object
+        post = BlogPost("About Python", 
+                        Category.technology,
+                        datetime.today(),
+                        "I learned about Python.")
+        post_json = post.to_json()
+
         print("original:{0}".format(post))
         print("serialized:{0}".format(post_json))
+
 
         # deserialize
         another_post_json = '{"title": "About Todays Lunch", "category": 2, "date": "2014/1/1 12:00:00", "content":"I ate Sushi." }'
         another_post = BlogPost().load_json(another_post_json)
+
         print("deserialized:{0}".format(another_post))
+
 
 The result is below::
 
@@ -48,6 +62,10 @@ The result is below::
     deserialized:About Todays Lunch@2014/1/1 12:00:00 [Category.life]: I ate Sushi.
 
 datetime and Enum also supported.
+
+Customize
+---------
+
 You can customize serialize/deserialize rule like below.::
 
     self.set_serialize_rule(datetime, lambda v: v.strftime("%Y/%m/%d %H:%M:%S"))
