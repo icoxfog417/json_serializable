@@ -23,6 +23,18 @@ class SerializeTestCase(unittest.TestCase):
 
         self.assertEqual(target.to_json(), deserialized.to_json())
 
+    @print_title
+    def test_load(self):
+        target = SerializableClass()
+        target_dict = target.__dict__
+        json_str = target.to_json()
+
+        from_dict = SerializableClass.load(target_dict)
+        from_json = SerializableClass.load(json_str)
+
+        self.assertEqual(target.to_json(), from_dict.to_json())
+        self.assertEqual(target.to_json(), from_json.to_json())
+
     def __deserialize(self):
         target = SerializableClass()
         json_str = target.to_json()

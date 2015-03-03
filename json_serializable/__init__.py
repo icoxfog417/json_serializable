@@ -24,6 +24,14 @@ class JsonSerializable(object):
     def set_deserialize_rule(self, target_type, rule):
         self.__deserialize_rule.update({target_type: rule})
 
+    @classmethod
+    def load(cls, serialized):
+        instance = cls()
+        if isinstance(serialized, dict):
+            return instance.load_dict(serialized)
+        else:
+            return instance.load_json(serialized)
+
     def load_dict(self, dictionary_data):
         if isinstance(dictionary_data, list):
             return list(map(lambda d: self.load_dict(d), dictionary_data))
